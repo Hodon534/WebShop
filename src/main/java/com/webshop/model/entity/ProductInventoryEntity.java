@@ -7,9 +7,8 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 /**
- * Entity that represents current Stocks
+ * Entity class representing current stock information for products.
  */
-
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,8 +25,10 @@ public class ProductInventoryEntity implements Serializable {
     private long inStock;
 
     /**
-     * @param currentPrice   (BigDecimal)
-     * @param inStock (long) - quantity
+     * Constructor to initialize product inventory with price and quantity.
+     *
+     * @param currentPrice The current price of the product.
+     * @param inStock      The quantity of the product in stock.
      */
     public ProductInventoryEntity(BigDecimal currentPrice, long inStock) {
         this.currentPrice = currentPrice;

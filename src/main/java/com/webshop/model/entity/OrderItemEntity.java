@@ -6,6 +6,9 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+/**
+ * Entity class representing an item within an order.
+ */
 @EqualsAndHashCode
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,6 +29,13 @@ public class OrderItemEntity {
     @Column(nullable = false, name = "created_at")
     private LocalDateTime createdAt;
 
+    /**
+     * Constructor to initialize an order item with a product, price, and quantity.
+     *
+     * @param product  The associated product.
+     * @param price    The price of the product.
+     * @param quantity The quantity of the product in the order.
+     */
     public OrderItemEntity(ProductEntity product, BigDecimal price, Long quantity) {
         this.product = product;
         this.price = price;

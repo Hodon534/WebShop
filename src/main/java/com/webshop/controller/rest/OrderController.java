@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * REST controller responsible for managing order-related operations.
+ */
 @Slf4j
 @AllArgsConstructor
 @RestController
@@ -18,6 +21,11 @@ public class OrderController {
     private OrderService orderService;
     private OrderMapper orderMapper;
 
+    /**
+     * Retrieves a list of all orders.
+     *
+     * @return A list of OrderDto representing all orders.
+     */
     @GetMapping("/all")
     public List<OrderDto> getAll() {
         return orderService.findAll().stream().map(orderMapper::toDto).toList();

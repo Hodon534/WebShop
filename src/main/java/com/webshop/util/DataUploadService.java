@@ -1,14 +1,10 @@
 package com.webshop.util;
 
-import com.fasterxml.jackson.core.exc.StreamReadException;
-import com.fasterxml.jackson.databind.DatabindException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.webshop.mapper.ProductMapper;
 import com.webshop.model.constants.LogConst;
 import com.webshop.model.dto.ProductCardDto;
-import com.webshop.model.entity.ProductEntity;
-import com.webshop.model.entity.ProductInventoryEntity;
 import com.webshop.service.ProductService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,15 +12,22 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.util.List;
 
+/**
+ * Service responsible for populating product data from a JSON file into the database.
+ */
 @Slf4j
 @AllArgsConstructor
 @Component
-public class DataUpload {
+public class DataUploadService {
     private ProductService productService;
     private ProductMapper productMapper;
 
+    /**
+     * Populates product data into the database from a JSON file.
+     *
+     * @throws IOException If there is an issue reading the JSON file.
+     */
     public void populateProducts() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 

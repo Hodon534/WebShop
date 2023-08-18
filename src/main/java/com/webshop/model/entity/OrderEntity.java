@@ -8,6 +8,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+/**
+ * Entity class representing an order.
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
@@ -26,6 +29,11 @@ public class OrderEntity {
     private LocalDateTime createdAt;
     private BigDecimal total;
 
+    /**
+     * Constructor to initialize the order with a list of items.
+     *
+     * @param orderItems The list of items in the order.
+     */
     public OrderEntity(List<OrderItemEntity> orderItems) {
         this.orderItems = orderItems;
         status = Status.CREATED.name();
@@ -61,6 +69,9 @@ public class OrderEntity {
         this.orderItems = orderItems;
     }
 
+    /**
+     * Calculates and sets the total cost of the order based on the items.
+     */
     private void countTotal() {
         this.total = orderItems
                 .stream()

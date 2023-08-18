@@ -4,6 +4,9 @@ import lombok.*;
 
 import java.math.BigDecimal;
 
+/**
+ * Data Transfer Object (DTO) representing an item within an order.
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString

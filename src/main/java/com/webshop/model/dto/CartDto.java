@@ -5,6 +5,9 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Data Transfer Object (DTO) representing a shopping cart.
+ */
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor

@@ -5,9 +5,18 @@ import com.webshop.model.entity.ProductEntity;
 import com.webshop.model.entity.ProductInventoryEntity;
 import org.springframework.stereotype.Component;
 
+/**
+ * Mapper class responsible for converting between Product-related DTOs and entities.
+ */
 @Component
 public class ProductMapper {
 
+    /**
+     * Converts a ProductEntity to a ProductCardDto.
+     *
+     * @param productEntity The ProductEntity to be converted.
+     * @return A ProductCardDto representing the converted product.
+     */
     public ProductCardDto entityToDto(ProductEntity productEntity) {
         return new ProductCardDto(
                 productEntity.getId(),
@@ -20,6 +29,13 @@ public class ProductMapper {
                 productEntity.getInventory().getInStock()
         );
     }
+
+    /**
+     * Converts a ProductCardDto to a new ProductEntity.
+     *
+     * @param productCardDto The ProductCardDto to be converted.
+     * @return A ProductEntity representing the converted product DTO.
+     */
         public ProductEntity dtoToNewEntity(ProductCardDto productCardDto) {
             return new ProductEntity(
                     productCardDto.getName(),

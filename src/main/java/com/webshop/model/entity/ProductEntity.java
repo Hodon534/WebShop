@@ -11,9 +11,8 @@ import java.time.LocalDateTime;
 //todo Serializable review
 
 /**
- * Items sold on the website
+ * Entity class representing items sold on the website.
  */
-
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
@@ -35,13 +34,22 @@ public class ProductEntity implements Serializable {
     @OneToOne(cascade = CascadeType.ALL)
     private ProductInventoryEntity inventory;
     /**
-     * image url
+     * Image URL of the product.
      */
     private String image;
     @Column(nullable = false, name = "created_at")
     private LocalDateTime createdAt;
 
-
+    /**
+     * Constructor to initialize a product with details.
+     *
+     * @param name           The name of the product.
+     * @param description    The description of the product.
+     * @param manufacturer   The manufacturer of the product.
+     * @param category       The category of the product.
+     * @param productInventory The inventory information of the product.
+     * @param image          The image URL of the product.
+     */
     public ProductEntity(String name, String description, String manufacturer, String category, ProductInventoryEntity productInventory, String image) {
         this.name = name;
         this.description = description;

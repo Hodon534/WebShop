@@ -4,6 +4,9 @@ import lombok.*;
 
 import java.math.BigDecimal;
 
+/**
+ * Data Transfer Object (DTO) representing a product card.
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString

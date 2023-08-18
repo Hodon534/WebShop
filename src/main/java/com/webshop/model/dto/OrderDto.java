@@ -6,7 +6,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-
+/**
+ * Data Transfer Object (DTO) representing an order.
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString

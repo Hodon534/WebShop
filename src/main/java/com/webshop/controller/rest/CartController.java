@@ -9,6 +9,9 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * REST controller responsible for managing shopping cart operations.
+ */
 @Slf4j
 @AllArgsConstructor
 @RestController
@@ -19,6 +22,11 @@ public class CartController {
     private OrderService orderService;
     private CartToOrderMapper cartToOrderMapper;
 
+    /**
+     * Saves a cart as an order.
+     *
+     * @param cartDto The cart data to be saved as an order.
+     */
     @PostMapping("/add")
     public void save(@RequestBody CartDto cartDto) {
         orderService.save(cartToOrderMapper.cartToOrder(cartDto));
