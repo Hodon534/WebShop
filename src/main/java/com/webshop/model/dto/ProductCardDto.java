@@ -20,6 +20,17 @@ public class ProductCardDto {
     private BigDecimal price;
     private long inStock;
 
+    /**
+     * Constructs a new ProductCardDto with the provided information.
+     *
+     * @param name        The name of the product.
+     * @param description The description of the product.
+     * @param manufacturer The manufacturer of the product.
+     * @param category    The category of the product.
+     * @param image       The URL of the product image.
+     * @param price       The price of the product.
+     * @param inStock     The quantity of the product in stock.
+     */
     public ProductCardDto(String name, String description, String manufacturer, String category, String image, BigDecimal price, long inStock) {
         this.name = name;
         this.description = description;
