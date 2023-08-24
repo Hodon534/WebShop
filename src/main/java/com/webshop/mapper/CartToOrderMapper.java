@@ -4,7 +4,9 @@ import com.webshop.model.dto.CartDto;
 import com.webshop.model.dto.CartItemDto;
 import com.webshop.model.entity.OrderEntity;
 import com.webshop.model.entity.OrderItemEntity;
+import com.webshop.model.entity.UserEntity;
 import com.webshop.service.ProductService;
+import com.webshop.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class CartToOrderMapper {
     private ProductService productService;
+    private UserService userService;
 
     /**
      * Converts a CartDto to an OrderEntity.
@@ -24,7 +27,8 @@ public class CartToOrderMapper {
      */
     public OrderEntity cartToOrder(CartDto cart) {
         return new OrderEntity(
-                cart.getItems().stream().map(this::cartItemToOrderItem).toList()
+                cart.getItems().stream().map(this::cartItemToOrderItem).toList(),
+                userService.find(cart.getUserId())
         );
     }
 

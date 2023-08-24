@@ -14,7 +14,8 @@ public class ProductCardDto {
     private long id;
     private String name;
     private String description;
-    private String manufacturer;
+    private String manufacturerName;
+    private long manufacturerId;
     private String category;
     private String image;
     private BigDecimal price;
@@ -23,18 +24,20 @@ public class ProductCardDto {
     /**
      * Constructs a new ProductCardDto with the provided information.
      *
-     * @param name        The name of the product.
-     * @param description The description of the product.
-     * @param manufacturer The manufacturer of the product.
-     * @param category    The category of the product.
-     * @param image       The URL of the product image.
-     * @param price       The price of the product.
-     * @param inStock     The quantity of the product in stock.
+     * @param name          The name of the product.
+     * @param description   The description of the product.
+     * @param manufacturerName The manufacturers name of the product.
+     * @param manufacturerId The manufacturers ID.
+     * @param category      The category of the product.
+     * @param image         The URL of the product image.
+     * @param price         The price of the product.
+     * @param inStock       The quantity of the product in stock.
      */
-    public ProductCardDto(String name, String description, String manufacturer, String category, String image, BigDecimal price, long inStock) {
+    public ProductCardDto(String name, String description, String manufacturerName, long manufacturerId, String category, String image, BigDecimal price, long inStock) {
         this.name = name;
         this.description = description;
-        this.manufacturer = manufacturer;
+        this.manufacturerName = manufacturerName;
+        this.manufacturerId = manufacturerId;
         this.category = category;
         this.image = image;
         this.price = price;
@@ -53,8 +56,12 @@ public class ProductCardDto {
         return description;
     }
 
-    public String getManufacturer() {
-        return manufacturer;
+    public String getManufacturerName() {
+        return manufacturerName;
+    }
+
+    public long getManufacturerId() {
+        return manufacturerId;
     }
 
     public String getCategory() {
@@ -85,8 +92,12 @@ public class ProductCardDto {
         this.description = description;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+    public void setManufacturerName(String manufacturerName) {
+        this.manufacturerName = manufacturerName;
+    }
+
+    public void setManufacturerId(long manufacturerId) {
+        this.manufacturerId = manufacturerId;
     }
 
     public void setCategory(String category) {

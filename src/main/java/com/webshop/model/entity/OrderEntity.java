@@ -3,6 +3,7 @@ package com.webshop.model.entity;
 import com.webshop.model.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
+import org.apache.catalina.User;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -28,14 +29,18 @@ public class OrderEntity {
     @Column(nullable = false, name = "created_at")
     private LocalDateTime createdAt;
     private BigDecimal total;
+    @JoinColumn(name = "user_id")
+    @ManyToOne
+    private UserEntity user;
 
     /**
      * Constructor to initialize the order with a list of items.
      *
      * @param orderItems The list of items in the order.
      */
-    public OrderEntity(List<OrderItemEntity> orderItems) {
+    public OrderEntity(List<OrderItemEntity> orderItems, UserEntity user) {
         this.orderItems = orderItems;
+        this.user = user;
         status = Status.CREATED.name();
         createdAt = LocalDateTime.now();
         countTotal();
@@ -59,6 +64,10 @@ public class OrderEntity {
 
     public BigDecimal getTotal() {
         return total;
+    }
+
+    public UserEntity getUser() {
+        return user;
     }
 
     public void setStatus(String status) {

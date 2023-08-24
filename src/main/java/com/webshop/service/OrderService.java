@@ -51,7 +51,7 @@ public class OrderService {
      */
     public OrderEntity find(Long id) {
         return orderRepository.findById(id).orElseThrow(
-                () -> new OrderException(String.format(ExceptionConst.ORDER_NOT_FOUND, id))
+                () -> new OrderException(String.format(ExceptionConst.ORDER_NOT_FOUND_MESSAGE, id))
         );
     }
 }

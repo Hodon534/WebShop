@@ -1,16 +1,20 @@
 package com.webshop.mapper;
 
 import com.webshop.model.dto.ProductCardDto;
+import com.webshop.model.entity.ManufacturerEntity;
 import com.webshop.model.entity.ProductEntity;
 import com.webshop.model.entity.ProductInventoryEntity;
+import com.webshop.service.ManufacturerService;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 /**
  * Mapper class responsible for converting between Product-related DTOs and entities.
  */
+@AllArgsConstructor
 @Component
 public class ProductMapper {
-
+    private ManufacturerService manufacturerService;
     /**
      * Converts a ProductEntity to a ProductCardDto.
      *
@@ -22,7 +26,8 @@ public class ProductMapper {
                 productEntity.getId(),
                 productEntity.getName(),
                 productEntity.getDescription(),
-                productEntity.getManufacturer(),
+                productEntity.getManufacturer().getName(),
+                productEntity.getManufacturer().getId(),
                 productEntity.getCategory(),
                 productEntity.getImage(),
                 productEntity.getInventory().getCurrentPrice(),
@@ -37,10 +42,11 @@ public class ProductMapper {
      * @return A ProductEntity representing the converted product DTO.
      */
         public ProductEntity dtoToNewEntity(ProductCardDto productCardDto) {
+            ManufacturerEntity manufacturer = manufacturerService.find(productCardDto.getManufacturerId());
             return new ProductEntity(
                     productCardDto.getName(),
                     productCardDto.getDescription(),
-                    productCardDto.getManufacturer(),
+                    manufacturer,
                     productCardDto.getCategory(),
                     new ProductInventoryEntity(
                             productCardDto.getPrice(),

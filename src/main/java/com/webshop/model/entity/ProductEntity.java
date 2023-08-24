@@ -17,7 +17,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-@Table(name = "items")
+@Table(name = "products")
 @Entity
 public class ProductEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +27,10 @@ public class ProductEntity implements Serializable {
     private String name;
     @Column(length = 2000)
     private String description;
-    private String manufacturer;
+    //@ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
+    @JoinColumn(name = "manufacturer_id")
+    private ManufacturerEntity manufacturer;
     @Column(nullable = false)
     private String category;
     @PrimaryKeyJoinColumn
@@ -50,7 +53,7 @@ public class ProductEntity implements Serializable {
      * @param productInventory The inventory information of the product.
      * @param image          The image URL of the product.
      */
-    public ProductEntity(String name, String description, String manufacturer, String category, ProductInventoryEntity productInventory, String image) {
+    public ProductEntity(String name, String description, ManufacturerEntity manufacturer, String category, ProductInventoryEntity productInventory, String image) {
         this.name = name;
         this.description = description;
         this.manufacturer = manufacturer;
@@ -72,7 +75,7 @@ public class ProductEntity implements Serializable {
         return description;
     }
 
-    public String getManufacturer() {
+    public ManufacturerEntity getManufacturer() {
         return manufacturer;
     }
 
@@ -100,7 +103,7 @@ public class ProductEntity implements Serializable {
         this.description = description;
     }
 
-    public void setManufacturer(String manufacturer) {
+    public void setManufacturer(ManufacturerEntity manufacturer) {
         this.manufacturer = manufacturer;
     }
 

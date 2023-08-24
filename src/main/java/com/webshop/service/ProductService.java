@@ -52,7 +52,7 @@ public class ProductService {
      */
     public ProductEntity find(long id) {
         return productRepository.findById(id).orElseThrow(
-                () -> new ProductException(String.format(ExceptionConst.PRODUCT_NOT_FOUND, id))
+                () -> new ProductException(String.format(ExceptionConst.PRODUCT_NOT_FOUND_MESSAGE, id))
         );
     }
 }

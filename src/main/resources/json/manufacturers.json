@@ -1,0 +1,173 @@
+{
+  "manufacturers":
+  [
+    {
+      "id": 1,
+      "name": "Fjallraven",
+      "address": {
+        "id": 1,
+        "street": "Street1",
+        "zipCode": "12345",
+        "city": "City1",
+        "country": "Country1"
+      },
+      "taxCode": "ABC123"
+    },
+    {
+      "id": 2,
+      "name": "Gildan",
+      "address": {
+        "id": 2,
+        "street": "Street2",
+        "zipCode": "23456",
+        "city": "City2",
+        "country": "Country2"
+      },
+      "taxCode": "DEF456"
+    },
+    {
+      "id": 3,
+      "name": "Reserved",
+      "address": {
+        "id": 3,
+        "street": "Street3",
+        "zipCode": "34567",
+        "city": "City3",
+        "country": "Country3"
+      },
+      "taxCode": "GHI789"
+    },
+    {
+      "id": 4,
+      "name": "Apart",
+      "address": {
+        "id": 4,
+        "street": "Street4",
+        "zipCode": "45678",
+        "city": "City4",
+        "country": "Country4"
+      },
+      "taxCode": "JKL012"
+    },
+    {
+      "id": 5,
+      "name": "W. Kruk",
+      "address": {
+        "id": 5,
+        "street": "Street5",
+        "zipCode": "56789",
+        "city": "City5",
+        "country": "Country5"
+      },
+      "taxCode": "MNO345"
+    },
+    {
+      "id": 6,
+      "name": "WD",
+      "address": {
+        "id": 6,
+        "street": "Street6",
+        "zipCode": "67890",
+        "city": "City6",
+        "country": "Country6"
+      },
+      "taxCode": "PQR678"
+    },
+    {
+      "id": 7,
+      "name": "SanDisk",
+      "address": {
+        "id": 7,
+        "street": "Street7",
+        "zipCode": "78901",
+        "city": "City7",
+        "country": "Country7"
+      },
+      "taxCode": "STU901"
+    },
+    {
+      "id": 8,
+      "name": "Silicon Power",
+      "address": {
+        "id": 8,
+        "street": "Street8",
+        "zipCode": "89012",
+        "city": "City8",
+        "country": "Country8"
+      },
+      "taxCode": "VWX123"
+    },
+    {
+      "id": 9,
+      "name": "Acer",
+      "address": {
+        "id": 9,
+        "street": "Street9",
+        "zipCode": "90123",
+        "city": "City9",
+        "country": "Country9"
+      },
+      "taxCode": "YZA456"
+    },
+    {
+      "id": 10,
+      "name": "Samsung",
+      "address": {
+        "id": 10,
+        "street": "Street10",
+        "zipCode": "01234",
+        "city": "City10",
+        "country": "Country10"
+      },
+      "taxCode": "BCD789"
+    },
+    {
+      "id": 11,
+      "name": "Biylaclesen",
+      "address": {
+        "id": 11,
+        "street": "Street11",
+        "zipCode": "12345",
+        "city": "City11",
+        "country": "Country11"
+      },
+      "taxCode": "EFG012"
+    },
+    {
+      "id": 12,
+      "name": "Supreme",
+      "address": {
+        "id": 12,
+        "street": "Street12",
+        "zipCode": "23456",
+        "city": "City12",
+        "country": "Country12"
+      },
+      "taxCode": "HIJ345"
+    },
+    {
+      "id": 13,
+      "name": "Black Diamond",
+      "address": {
+        "id": 13,
+        "street": "Street13",
+        "zipCode": "34567",
+        "city": "City13",
+        "country": "Country13"
+      },
+      "taxCode": "KLM678"
+    },
+    {
+      "id": 14,
+      "name": "MBJ",
+      "address": {
+        "id": 14,
+        "street": "Street14",
+        "zipCode": "45678",
+        "city": "City14",
+        "country": "Country14"
+      },
+      "taxCode": "NOP901"
+    }
+  ]
+}

@@ -18,6 +18,7 @@ public class OrderDto {
     private String status;
     private LocalDateTime createdAt;
     private BigDecimal total;
+    private long userId;
 
     public long getId() {
         return id;
@@ -39,6 +40,10 @@ public class OrderDto {
         return total;
     }
 
+    public long getUserId() {
+        return userId;
+    }
+
     public void setId(long id) {
         this.id = id;
     }
@@ -57,5 +62,9 @@ public class OrderDto {
 
     public void setTotal(BigDecimal total) {
         this.total = total;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 }

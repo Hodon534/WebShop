@@ -1,0 +1,57 @@
+{
+  "carts":
+  [
+    {
+      "userId": 1,
+      "items": [
+        {
+          "id": 1,
+          "name": "Product 1",
+          "price": 10.99,
+          "quantity": 2,
+          "image": "product1.jpg"
+        },
+        {
+          "id": 3,
+          "name": "Product 3",
+          "price": 15.99,
+          "quantity": 1,
+          "image": "product3.jpg"
+        },
+        {
+          "id": 5,
+          "name": "Product 5",
+          "price": 19.99,
+          "quantity": 3,
+          "image": "product5.jpg"
+        },
+        {
+          "id": 11,
+          "name": "Product 11",
+          "price": 12.49,
+          "quantity": 4,
+          "image": "product11.jpg"
+        }
+      ]
+    },
+    {
+      "userId": 1,
+      "items": [
+        {
+          "id": 3,
+          "name": "Product 3",
+          "price": 15.99,
+          "quantity": 2,
+          "image": "product3.jpg"
+        },
+        {
+          "id": 7,
+          "name": "Product 7",
+          "price": 9.99,
+          "quantity": 5,
+          "image": "product7.jpg"
+        }
+      ]
+    }
+  ]
+}

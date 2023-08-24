@@ -18,8 +18,14 @@ public class DataUploadConfig {
      * @return A CommandLineRunner instance.
      */
     @Bean
-    public CommandLineRunner populateData(DataUploadService dataPopulationService) {
-        return args -> dataPopulationService.populateProducts();
+    public CommandLineRunner populateProductData(DataUploadService dataPopulationService) {
+        return args -> {
+            dataPopulationService.populateManufacturers();
+            dataPopulationService.populateProducts();
+            dataPopulationService.populateUsers();
+            dataPopulationService.populateCarts();
+        };
 
     }
+
 }

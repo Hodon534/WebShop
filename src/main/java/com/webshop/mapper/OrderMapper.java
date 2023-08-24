@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
 public class OrderMapper {
     private OrderItemMapper orderItemMapper;
 
-    public OrderEntity dtoToNewEntity(OrderDto dto) {
+/*    public OrderEntity dtoToNewEntity(OrderDto dto) {
         return new OrderEntity(
                 dto.getOrderItems().stream().map(item -> orderItemMapper.toEntity(item)).toList()
         );
-    }
+    }*/
 
     public OrderDto toDto(OrderEntity entity) {
         return new OrderDto(
@@ -22,7 +22,8 @@ public class OrderMapper {
                 entity.getOrderItems().stream().map(item -> orderItemMapper.toDto(item)).toList(),
                 entity.getStatus(),
                 entity.getCreatedAt(),
-                entity.getTotal()
+                entity.getTotal(),
+                entity.getUser().getId()
         );
     }
 }

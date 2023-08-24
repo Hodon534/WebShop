@@ -3,7 +3,6 @@ package com.webshop.controller.rest;
 import com.webshop.mapper.CartToOrderMapper;
 import com.webshop.model.constants.LogConst;
 import com.webshop.model.dto.CartDto;
-import com.webshop.model.dto.OrderDto;
 import com.webshop.service.OrderService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * REST controller responsible for managing shopping cart operations.
  */
+
 @Slf4j
 @AllArgsConstructor
 @RestController
@@ -30,6 +30,7 @@ public class CartController {
     @PostMapping("/add")
     public void save(@RequestBody CartDto cartDto) {
         orderService.save(cartToOrderMapper.cartToOrder(cartDto));
-        log.info(LogConst.ORDER_ADDED);
+        log.info(LogConst.ORDER_ADDED_MESSAGE);
+
     }
 }

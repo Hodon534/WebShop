@@ -40,7 +40,7 @@ public class ProductController {
     @PostMapping("/add")
     public void save(@RequestBody ProductCardDto productCardDto) {
         productService.save(productMapper.dtoToNewEntity(productCardDto));
-        log.info(LogConst.PRODUCT_ADDED);
+        log.info(LogConst.PRODUCT_ADDED_MESSAGE);
     }
 
     /**

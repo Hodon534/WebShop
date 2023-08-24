@@ -15,5 +15,6 @@ import java.util.List;
 @Getter
 public class CartDto {
     private List<CartItemDto> items = new ArrayList<>();
+    private long userId;
 
 }
