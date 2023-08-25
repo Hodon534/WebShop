@@ -25,7 +25,7 @@ class AccessConst {
     };
 
     /**
-     * User resources, available for registered and confirmed users
+     * User resources, available for registered users
      */
     protected static final String[] RESOURCES_USER = {
             "/h2/**",
