@@ -1,23 +1,22 @@
 package com.webshop.service;
 
 import com.webshop.repository.ProductRepository;
+import com.webshop.service.impl.ProductServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @ExtendWith(MockitoExtension.class)
-class ProductServiceTest {
+class ProductServiceImplTest {
     @Mock
     private ProductRepository productRepository;
-    private ProductService underTest;
+    private ProductServiceImpl underTest;
 
     @BeforeEach
     void setUp() {
-        underTest = new ProductService(productRepository);
+        underTest = new ProductServiceImpl(productRepository);
     }
     @Test
     void save() {

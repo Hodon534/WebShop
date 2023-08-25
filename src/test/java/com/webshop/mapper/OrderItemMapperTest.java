@@ -1,26 +1,16 @@
 package com.webshop.mapper;
 
 import com.webshop.model.dto.OrderItemDto;
-import com.webshop.model.entity.OrderEntity;
 import com.webshop.model.entity.OrderItemEntity;
 import com.webshop.model.entity.ProductEntity;
-import com.webshop.model.entity.ProductInventoryEntity;
-import com.webshop.service.OrderService;
-import com.webshop.service.ProductService;
-import org.aspectj.weaver.ast.Or;
+import com.webshop.service.impl.OrderServiceImpl;
+import com.webshop.service.impl.ProductServiceImpl;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
-import java.util.Collections;
-import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
@@ -29,10 +19,10 @@ import static org.mockito.Mockito.when;
 class OrderItemMapperTest {
 
     @Mock
-    private OrderService orderService;
+    private OrderServiceImpl orderServiceImpl;
 
     @Mock
-    private ProductService productService;
+    private ProductServiceImpl productServiceImpl;
 
     private static OrderItemMapper underTest;
 
@@ -43,7 +33,7 @@ class OrderItemMapperTest {
 
     @Test
     void testToEntity() {
-        underTest = new OrderItemMapper(orderService, productService);
+        underTest = new OrderItemMapper(orderServiceImpl, productServiceImpl);
         // Create a sample OrderItemDto
         OrderItemDto dto = new OrderItemDto();
         dto.setProductId(123L);
@@ -51,7 +41,7 @@ class OrderItemMapperTest {
         dto.setQuantity(2);
 
         // Mock ProductService to return a ProductEntity
-        when(productService.find(dto.getProductId())).thenReturn(new ProductEntity());
+        when(productServiceImpl.find(dto.getProductId())).thenReturn(new ProductEntity());
 
         // Call the method
         OrderItemEntity entity = underTest.toEntity(dto);

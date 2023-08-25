@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.webshop.mapper.CartToOrderMapper;
 import com.webshop.mapper.ManufacturerMapper;
 import com.webshop.mapper.ProductMapper;
+import com.webshop.mapper.RegistrationMapper;
 import com.webshop.model.constants.LogConst;
 import com.webshop.model.dto.CartDto;
 import com.webshop.model.dto.ManufacturerDto;
@@ -14,6 +15,10 @@ import com.webshop.service.ManufacturerService;
 import com.webshop.service.OrderService;
 import com.webshop.service.ProductService;
 import com.webshop.service.RegistrationService;
+import com.webshop.service.impl.ManufacturerServiceImpl;
+import com.webshop.service.impl.OrderServiceImpl;
+import com.webshop.service.impl.ProductServiceImpl;
+import com.webshop.service.impl.RegistrationServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
@@ -33,6 +38,7 @@ public class DataUploadService {
     private ManufacturerService manufacturerService;
     private ManufacturerMapper manufacturerMapper;
     private RegistrationService registrationService;
+    private RegistrationMapper registrationMapper;
     private OrderService orderService;
     private CartToOrderMapper cartToOrderMapper;
 
@@ -56,6 +62,11 @@ public class DataUploadService {
 
     }
 
+    /**
+     * Populates manufacturers into the database from a JSON file.
+     *
+     * @throws IOException If there is an issue reading the JSON file.
+     */
     public void populateManufacturers() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -71,6 +82,11 @@ public class DataUploadService {
 
     }
 
+    /**
+     * Populates users into the database from a JSON file.
+     *
+     * @throws IOException If there is an issue reading the JSON file.
+     */
     public void populateUsers() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -80,12 +96,17 @@ public class DataUploadService {
 
         for (JsonNode user : userNode) {
             RegistrationRequestDto requestDto = objectMapper.treeToValue(user, RegistrationRequestDto.class);
-            registrationService.register(requestDto);
+            registrationService.register(registrationMapper.registrationRequestToUserEntity(requestDto));
         }
         log.info(LogConst.DATABASE_USERS_UPDATED_MESSAGE);
 
     }
 
+    /**
+     * Populates orders from carts into the database from a JSON file.
+     *
+     * @throws IOException If there is an issue reading the JSON file.
+     */
     public void populateCarts() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
 

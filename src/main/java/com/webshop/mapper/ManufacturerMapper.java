@@ -4,14 +4,10 @@ import com.webshop.model.dto.AddressDto;
 import com.webshop.model.dto.ManufacturerDto;
 import com.webshop.model.entity.AddressEntity;
 import com.webshop.model.entity.ManufacturerEntity;
-import com.webshop.service.ManufacturerService;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
-@AllArgsConstructor
 @Component
 public class ManufacturerMapper {
-    private ManufacturerService manufacturerService;
 
     public ManufacturerDto entityToDto(ManufacturerEntity entity) {
         return new ManufacturerDto(

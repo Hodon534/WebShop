@@ -2,7 +2,6 @@ package com.webshop.mapper;
 
 import com.webshop.model.dto.OrderItemDto;
 import com.webshop.model.entity.OrderItemEntity;
-import com.webshop.service.OrderService;
 import com.webshop.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Component;
 @AllArgsConstructor
 @Component
 public class OrderItemMapper {
-    private OrderService orderService;
     private ProductService productService;
 
     public OrderItemEntity toEntity(OrderItemDto dto) {

@@ -1,10 +1,8 @@
 package com.webshop.config;
 
 import com.webshop.model.enums.UserRole;
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -23,6 +21,8 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
+
+    private static final long MAX_AGE = 3600L;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
@@ -46,7 +46,7 @@ public class WebSecurityConfig {
                                             UserRole.ADMIN.name());
                         })
                 .formLogin(
-                        (form) ->
+                        form ->
                                 form
                                         .loginPage("/login")
                                         .loginProcessingUrl("/login")
@@ -56,11 +56,9 @@ public class WebSecurityConfig {
                 .logout(logout -> logout
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 )
-                .cors(withDefaults()) // Enable CORS
+                .cors(withDefaults())
                 .headers(header -> header
-                        .frameOptions(HeadersConfigurer.FrameOptionsConfig::disable)); // Allow embedding in iframes from the same origin
-
-        ;
+                        .frameOptions(HeadersConfigurer.FrameOptionsConfig::disable));
 
         return http.build();
     }
@@ -68,11 +66,11 @@ public class WebSecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Collections.singletonList("http://localhost:4200")); // Allow requests from http://localhost:4200
-        configuration.setAllowedMethods(Collections.singletonList("*")); // Allow all HTTP methods
-        configuration.setAllowCredentials(true); // Allow cookies and authentication headers
-        configuration.addAllowedHeader("*"); // Allow all headers
-        configuration.setMaxAge(3600L); // Set the maximum age (in seconds) of the pre-flight response cache
+        configuration.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
+        configuration.setAllowedMethods(Collections.singletonList("*"));
+        configuration.setAllowCredentials(true);
+        configuration.addAllowedHeader("*");
+        configuration.setMaxAge(MAX_AGE);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
