@@ -2,8 +2,9 @@ package com.webshop.model.dto;
 
 import lombok.*;
 
-//todo
-
+/**
+ * A Data Transfer Object (DTO) representing address information.
+ */
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor

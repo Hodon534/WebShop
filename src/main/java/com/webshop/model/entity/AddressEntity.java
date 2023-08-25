@@ -2,12 +2,12 @@ package com.webshop.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.repository.cdi.Eager;
 
 import java.io.Serializable;
 
-//todo
-
+/**
+ * Entity class representing an address.
+ */
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor

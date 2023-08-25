@@ -10,6 +10,9 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+/**
+ * REST controller responsible for managing register-related operations.
+ */
 @Slf4j
 @RestController
 @AllArgsConstructor

@@ -15,6 +15,9 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Entity class representing a user.
+ */
 @Getter
 @Setter
 @EqualsAndHashCode

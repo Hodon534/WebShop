@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.apache.catalina.User;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -18,7 +19,7 @@ import java.util.List;
 @ToString
 @Table(name = "orders")
 @Entity
-public class OrderEntity {
+public class OrderEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;

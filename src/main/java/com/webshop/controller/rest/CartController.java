@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 /**
  * REST controller responsible for managing shopping cart operations.
  */
-
 @Slf4j
 @AllArgsConstructor
 @RestController

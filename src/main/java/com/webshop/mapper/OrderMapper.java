@@ -5,6 +5,9 @@ import com.webshop.model.entity.OrderEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+/**
+ * Mapper class responsible for converting between OrderEntity and OrderDto objects.
+ */
 @AllArgsConstructor
 @Component
 public class OrderMapper {
@@ -16,6 +19,12 @@ public class OrderMapper {
         );
     }*/
 
+    /**
+     * Converts an OrderEntity object to an OrderDto object.
+     *
+     * @param entity The OrderEntity to be converted.
+     * @return An OrderDto representing the converted entity.
+     */
     public OrderDto toDto(OrderEntity entity) {
         return new OrderDto(
                 entity.getId(),

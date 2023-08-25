@@ -2,6 +2,9 @@ package com.webshop.model.dto;
 
 import lombok.*;
 
+/**
+ * A Data Transfer Object (DTO) representing manufacturer information.
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString

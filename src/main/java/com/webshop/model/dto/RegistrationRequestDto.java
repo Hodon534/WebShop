@@ -5,6 +5,9 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
+/**
+ * A Data Transfer Object (DTO) representing a user's registration request.
+ */
 @Getter
 @Setter
 @NoArgsConstructor

@@ -6,11 +6,20 @@ import com.webshop.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+/**
+ * Mapper class responsible for converting between OrderItemEntity and OrderItemDto objects.
+ */
 @AllArgsConstructor
 @Component
 public class OrderItemMapper {
     private ProductService productService;
 
+    /**
+     * Converts an OrderItemDto object to an OrderItemEntity object.
+     *
+     * @param dto The OrderItemDto to be converted.
+     * @return An OrderItemEntity representing the converted dto.
+     */
     public OrderItemEntity toEntity(OrderItemDto dto) {
         return new OrderItemEntity(
                 productService.find(dto.getProductId()),
@@ -19,6 +28,12 @@ public class OrderItemMapper {
             );
     }
 
+    /**
+     * Converts an OrderItemEntity object to an OrderItemDto object.
+     *
+     * @param entity The OrderItemEntity to be converted.
+     * @return An OrderItemDto representing the converted entity.
+     */
     public OrderItemDto toDto(OrderItemEntity entity) {
         return new OrderItemDto(
                 entity.getId(),

@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * REST controller responsible for managing manufacturer-related operations.
+ */
 @Slf4j
 @AllArgsConstructor
 @RestController
@@ -21,12 +24,21 @@ public class ManufacturerController {
     private ManufacturerMapper manufacturerMapper;
     private ManufacturerService manufacturerService;
 
+    /**
+     * Endpoint to retrieve a list of all manufacturers.
+     *
+     * @return List of ManufacturerDto objects representing manufacturers.
+     */
     @GetMapping("/all")
     public List<ManufacturerDto> findAll() {
         return manufacturerService.findAll().stream().map(manufacturerMapper::entityToDto).toList();
     }
 
-
+    /**
+     * Endpoint to add a new manufacturer.
+     *
+     * @param manufacturerDto The ManufacturerDto object representing the manufacturer to be added.
+     */
     @PostMapping("/add")
     public void save(@RequestBody ManufacturerDto manufacturerDto) {
         manufacturerService.save(manufacturerMapper.dtoToEntity(manufacturerDto));

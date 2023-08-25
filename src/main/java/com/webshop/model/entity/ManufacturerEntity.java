@@ -1,14 +1,13 @@
 package com.webshop.model.entity;
 
 import jakarta.persistence.*;
-import jdk.jfr.Category;
 import lombok.*;
-import org.hibernate.annotations.JdbcTypeCode;
-import org.hibernate.type.SqlTypes;
 
-import java.io.Serial;
 import java.io.Serializable;
 
+/**
+ * Entity class representing a manufacturer.
+ */
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
