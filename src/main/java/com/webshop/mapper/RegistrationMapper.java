@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RegistrationMapper {
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final AddressMapper addressMapper;
     private static final UserRole defaultRole = UserRole.USER;
 
     /**
@@ -30,12 +31,7 @@ public class RegistrationMapper {
                 defaultRole,
                 request.getFirstName(),
                 request.getLastName(),
-                new AddressEntity(
-                        request.getAddress().getStreet(),
-                        request.getAddress().getZipCode(),
-                        request.getAddress().getStreet(),
-                        request.getAddress().getCountry()
-                ),
+                addressMapper.dtoToEntity(request.getAddress()),
                 request.getPhoneNumber()
         );
     }

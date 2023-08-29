@@ -4,13 +4,16 @@ import com.webshop.model.dto.AddressDto;
 import com.webshop.model.dto.ManufacturerDto;
 import com.webshop.model.entity.AddressEntity;
 import com.webshop.model.entity.ManufacturerEntity;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
 /**
  * Mapper class responsible for converting between ManufacturerEntity and ManufacturerDto objects.
  */
+@AllArgsConstructor
 @Component
 public class ManufacturerMapper {
+    private final AddressMapper addressMapper;
 
     /**
      * Converts a ManufacturerEntity object to a ManufacturerDto object.
@@ -22,13 +25,7 @@ public class ManufacturerMapper {
         return new ManufacturerDto(
                 entity.getId(),
                 entity.getName(),
-                new AddressDto(
-                        entity.getAddress().getId(),
-                        entity.getAddress().getStreet(),
-                        entity.getAddress().getZipCode(),
-                        entity.getAddress().getCity(),
-                        entity.getAddress().getCountry()
-                ),
+                addressMapper.entityToDto(entity.getAddress()),
                 entity.getTaxCode()
         );
     }
@@ -42,12 +39,7 @@ public class ManufacturerMapper {
     public ManufacturerEntity dtoToEntity(ManufacturerDto dto) {
         return new ManufacturerEntity(
                 dto.getName(),
-                new AddressEntity(
-                        dto.getAddress().getStreet(),
-                        dto.getAddress().getZipCode(),
-                        dto.getAddress().getCity(),
-                        dto.getAddress().getCountry()
-                ),
+                addressMapper.dtoToEntity(dto.getAddress()),
                 dto.getTaxCode()
         );
     }

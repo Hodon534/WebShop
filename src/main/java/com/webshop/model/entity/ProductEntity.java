@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 /**
  * Entity class representing items sold on the website.
  */
+@Setter
 @EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor

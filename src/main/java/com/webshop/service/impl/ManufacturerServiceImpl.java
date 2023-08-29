@@ -5,6 +5,7 @@ import com.webshop.model.constants.ExceptionConst;
 import com.webshop.model.entity.ManufacturerEntity;
 import com.webshop.repository.ManufacturerRepository;
 import com.webshop.service.ManufacturerService;
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

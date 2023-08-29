@@ -5,6 +5,7 @@ import com.webshop.model.entity.OrderEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -14,6 +15,7 @@ import java.time.format.DateTimeFormatter;
 @Component
 public class OrderMapper {
     private OrderItemMapper orderItemMapper;
+    private static final String DATE_TIME_FORMAT = "yyyy-MM-dd HH:mm";
 
 
     /**
@@ -27,9 +29,13 @@ public class OrderMapper {
                 entity.getId(),
                 entity.getOrderItems().stream().map(item -> orderItemMapper.toDto(item)).toList(),
                 entity.getStatus(),
-                entity.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")),
+                dateFormat(entity.getCreatedAt()),
                 entity.getTotal(),
                 entity.getUser().getId()
         );
+    }
+
+    private String dateFormat(LocalDateTime createdAt) {
+        return createdAt.format(DateTimeFormatter.ofPattern(DATE_TIME_FORMAT));
     }
 }
