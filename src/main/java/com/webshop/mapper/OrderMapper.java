@@ -5,6 +5,8 @@ import com.webshop.model.entity.OrderEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.time.format.DateTimeFormatter;
+
 /**
  * Mapper class responsible for converting between OrderEntity and OrderDto objects.
  */
@@ -13,11 +15,6 @@ import org.springframework.stereotype.Component;
 public class OrderMapper {
     private OrderItemMapper orderItemMapper;
 
-/*    public OrderEntity dtoToNewEntity(OrderDto dto) {
-        return new OrderEntity(
-                dto.getOrderItems().stream().map(item -> orderItemMapper.toEntity(item)).toList()
-        );
-    }*/
 
     /**
      * Converts an OrderEntity object to an OrderDto object.
@@ -30,7 +27,7 @@ public class OrderMapper {
                 entity.getId(),
                 entity.getOrderItems().stream().map(item -> orderItemMapper.toDto(item)).toList(),
                 entity.getStatus(),
-                entity.getCreatedAt(),
+                entity.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")),
                 entity.getTotal(),
                 entity.getUser().getId()
         );

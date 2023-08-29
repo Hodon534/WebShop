@@ -3,7 +3,6 @@ package com.webshop.config;
 /**
  * The AccessConst class defines constants for specifying access control to various resources in the web application.
  * It groups these resources into three categories: public, user, and admin resources, each with an array of URLs.
- *
  * This class is used in Spring Security configuration to define access permissions based on user roles.
  */
 class AccessConst {

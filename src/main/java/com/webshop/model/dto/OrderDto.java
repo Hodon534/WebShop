@@ -16,7 +16,7 @@ public class OrderDto {
     private long id;
     private List<OrderItemDto> orderItems;
     private String status;
-    private LocalDateTime createdAt;
+    private String createdAt;
     private BigDecimal total;
     private long userId;
 
@@ -32,7 +32,7 @@ public class OrderDto {
         return status;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
@@ -56,7 +56,7 @@ public class OrderDto {
         this.status = status;
     }
 
-    public void setCreatedAt(LocalDateTime createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 
