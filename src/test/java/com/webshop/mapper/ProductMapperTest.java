@@ -9,12 +9,12 @@ import com.webshop.service.ManufacturerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 class ProductMapperTest {
@@ -26,6 +26,23 @@ class ProductMapperTest {
 
     @BeforeEach
     public void setUp() {
+        long manufacturerId = 15L;
+        String manufacturerName = "ManufacturerName";
+
+        ManufacturerEntity manufacturer = new ManufacturerEntity(
+                manufacturerId,
+                manufacturerName,
+                new AddressEntity(
+                        "street",
+                        "zipCode",
+                        "city",
+                        "country"
+                ),
+                "taxCode"
+        );
+
+        manufacturerService = mock(ManufacturerService.class);
+        when(manufacturerService.find(manufacturerId)).thenReturn(manufacturer);
         underTest = new ProductMapper(manufacturerService);
     }
 
@@ -108,14 +125,18 @@ class ProductMapperTest {
                 quantity
         );
         // when
-        /*ProductEntity entity = underTest.dtoToNewEntity(dto);
+        ProductEntity entity = underTest.dtoToNewEntity(dto);
         // then
         assertAll(
                 () -> assertEquals(entity.getName(), name),
                 () -> assertEquals(entity.getDescription(), description),
                 () -> assertEquals(entity.getCategory(), category),
-                () -> assertEquals(entity.getImage(), image)
-        );*/
+                () -> assertEquals(entity.getImage(), image),
+                () -> assertEquals(entity.getManufacturer().getId(), manufacturerId),
+                () -> assertEquals(entity.getManufacturer().getName(), manufacturerName),
+                () -> assertEquals(entity.getInventory().getCurrentPrice(), price),
+                () -> assertEquals(entity.getInventory().getInStock(), quantity)
+        );
 
 
     }
