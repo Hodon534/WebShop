@@ -1,6 +1,7 @@
 package com.webshop.controller.rest;
 
 import com.webshop.mapper.CartToOrderMapper;
+import com.webshop.model.constants.CrossOriginConst;
 import com.webshop.model.constants.LogConst;
 import com.webshop.model.dto.CartDto;
 import com.webshop.service.OrderService;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/v1/cart")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = CrossOriginConst.BASE_LINK)
 public class CartController {
 
     private OrderService orderService;

@@ -89,15 +89,15 @@ class ProductMapperTest {
         ProductCardDto dto = underTest.entityToDto(entity);
         //then
         assertAll(
-                () -> assertEquals(dto.getId(), id),
-                () -> assertEquals(dto.getName(), name),
-                () -> assertEquals(dto.getDescription(), description),
-                () -> assertEquals(dto.getManufacturerName(), manufacturerName),
-                () -> assertEquals(dto.getManufacturerId(), manufacturerId),
-                () -> assertEquals(dto.getCategory(), category),
-                () -> assertEquals(dto.getImage(), image),
-                () -> assertEquals(dto.getPrice(), price),
-                () -> assertEquals(dto.getInStock(), quantity)
+                () -> assertEquals(id, dto.getId()),
+                () -> assertEquals(name, dto.getName()),
+                () -> assertEquals(description, dto.getDescription()),
+                () -> assertEquals(manufacturerName, dto.getManufacturerName()),
+                () -> assertEquals(manufacturerId, dto.getManufacturerId()),
+                () -> assertEquals(category, dto.getCategory()),
+                () -> assertEquals(image, dto.getImage()),
+                () -> assertEquals(price, dto.getPrice()),
+                () -> assertEquals(quantity, dto.getInStock())
         );
     }
 
@@ -128,14 +128,14 @@ class ProductMapperTest {
         ProductEntity entity = underTest.dtoToNewEntity(dto);
         // then
         assertAll(
-                () -> assertEquals(entity.getName(), name),
-                () -> assertEquals(entity.getDescription(), description),
-                () -> assertEquals(entity.getCategory(), category),
-                () -> assertEquals(entity.getImage(), image),
-                () -> assertEquals(entity.getManufacturer().getId(), manufacturerId),
-                () -> assertEquals(entity.getManufacturer().getName(), manufacturerName),
-                () -> assertEquals(entity.getInventory().getCurrentPrice(), price),
-                () -> assertEquals(entity.getInventory().getInStock(), quantity)
+                () -> assertEquals(name, entity.getName()),
+                () -> assertEquals(description, entity.getDescription()),
+                () -> assertEquals(category, entity.getCategory()),
+                () -> assertEquals(image, entity.getImage()),
+                () -> assertEquals(manufacturerId, entity.getManufacturer().getId()),
+                () -> assertEquals(manufacturerName, entity.getManufacturer().getName()),
+                () -> assertEquals(price, entity.getInventory().getCurrentPrice()),
+                () -> assertEquals(quantity, entity.getInventory().getInStock())
         );
 
 

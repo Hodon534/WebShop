@@ -1,5 +1,6 @@
 package com.webshop.controller.rest;
 
+import com.webshop.model.constants.CrossOriginConst;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/users")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = CrossOriginConst.BASE_LINK)
 public class UserController {
 
     @GetMapping("/logged")

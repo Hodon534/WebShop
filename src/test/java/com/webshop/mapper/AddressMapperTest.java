@@ -38,11 +38,11 @@ class AddressMapperTest {
         AddressDto dto = underTest.entityToDto(entity);
         // then
         assertAll(
-                () -> assertEquals(dto.getId(), id),
-                () -> assertEquals(dto.getStreet(), street),
-                () -> assertEquals(dto.getZipCode(), zipCode),
-                () -> assertEquals(dto.getCity(), city),
-                () -> assertEquals(dto.getCountry(), country)
+                () -> assertEquals(id, dto.getId()),
+                () -> assertEquals(street, dto.getStreet()),
+                () -> assertEquals(zipCode, dto.getZipCode()),
+                () -> assertEquals(city, dto.getCity()),
+                () -> assertEquals(country, dto.getCountry())
         );
     }
 
@@ -65,10 +65,10 @@ class AddressMapperTest {
         AddressEntity entity = underTest.dtoToEntity(dto);
         // then
         assertAll(
-                () -> assertEquals(entity.getStreet(), street),
-                () -> assertEquals(entity.getZipCode(), zipCode),
-                () -> assertEquals(entity.getCity(), city),
-                () -> assertEquals(entity.getCountry(), country)
+                () -> assertEquals(street, entity.getStreet()),
+                () -> assertEquals(zipCode, entity.getZipCode()),
+                () -> assertEquals(city, entity.getCity()),
+                () -> assertEquals(country, entity.getCountry())
         );
     }
 }

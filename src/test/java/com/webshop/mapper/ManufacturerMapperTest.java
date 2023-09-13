@@ -20,7 +20,7 @@ class ManufacturerMapperTest {
     private ManufacturerMapper underTest;
 
     @BeforeEach
-    public void setUp() {
+    void setUp() {
         AddressEntity addressEntity = new AddressEntity(
                 "Street",
                 "ZipCode",
@@ -49,9 +49,9 @@ class ManufacturerMapperTest {
     ManufacturerDto dto = underTest.entityToDto(manufacturerEntity);
     // then
     assertAll(
-            () -> assertEquals(dto.getId(), id),
-            () -> assertEquals(dto.getName(), name),
-            () -> assertEquals(dto.getTaxCode(), taxCode)
+            () -> assertEquals(id, dto.getId()),
+            () -> assertEquals(name, dto.getName()),
+            () -> assertEquals(taxCode, dto.getTaxCode())
             );
     }
 
@@ -69,8 +69,8 @@ class ManufacturerMapperTest {
 
         // then
         assertAll(
-                () -> assertEquals(entity.getName(), name),
-                () -> assertEquals(entity.getTaxCode(), taxCode)
+                () -> assertEquals(name, entity.getName()),
+                () -> assertEquals(taxCode, entity.getTaxCode())
         );
     }
 }

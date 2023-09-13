@@ -1,6 +1,7 @@
 package com.webshop.controller.rest;
 
 import com.webshop.mapper.ManufacturerMapper;
+import com.webshop.model.constants.CrossOriginConst;
 import com.webshop.model.constants.LogConst;
 import com.webshop.model.dto.ManufacturerDto;
 import com.webshop.service.ManufacturerService;
@@ -18,7 +19,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/v1/manufacturers")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = CrossOriginConst.BASE_LINK)
 public class ManufacturerController {
 
     private ManufacturerMapper manufacturerMapper;

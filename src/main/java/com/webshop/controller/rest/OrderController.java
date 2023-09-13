@@ -1,6 +1,7 @@
 package com.webshop.controller.rest;
 
 import com.webshop.mapper.OrderMapper;
+import com.webshop.model.constants.CrossOriginConst;
 import com.webshop.model.dto.OrderDto;
 import com.webshop.service.OrderService;
 import lombok.AllArgsConstructor;
@@ -16,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/v1/orders")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = CrossOriginConst.BASE_LINK)
 public class OrderController {
     private OrderService orderService;
     private OrderMapper orderMapper;

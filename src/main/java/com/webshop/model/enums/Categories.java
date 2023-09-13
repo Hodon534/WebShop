@@ -2,6 +2,8 @@ package com.webshop.model.enums;
 
 import lombok.Getter;
 
+//todo Remove class? it's already in front end
+
 /**
  * Enum representing different categories of products.
  */

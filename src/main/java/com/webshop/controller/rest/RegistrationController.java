@@ -1,6 +1,7 @@
 package com.webshop.controller.rest;
 
 import com.webshop.mapper.RegistrationMapper;
+import com.webshop.model.constants.CrossOriginConst;
 import com.webshop.model.constants.LogConst;
 import com.webshop.model.dto.RegistrationRequestDto;
 import com.webshop.service.RegistrationService;
@@ -17,7 +18,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/v1/registration")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = CrossOriginConst.BASE_LINK)
 public class RegistrationController {
     private RegistrationService registrationService;
     private RegistrationMapper registrationMapper;

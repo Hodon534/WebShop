@@ -1,5 +1,6 @@
 package com.webshop.config;
 
+import com.webshop.model.constants.CrossOriginConst;
 import com.webshop.model.enums.UserRole;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,11 +27,6 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
-    /**
-     * Constant defining the maximum age for CORS (Cross-Origin Resource Sharing) configuration.
-     */
-    private static final long MAX_AGE = 3600L;
-
     /**
      * Configures a bean of type BCryptPasswordEncoder, commonly used for password encoding and decoding in Spring Security.
      *
@@ -90,11 +86,11 @@ public class WebSecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
+        configuration.setAllowedOrigins(Collections.singletonList(CrossOriginConst.BASE_LINK));
         configuration.setAllowedMethods(Collections.singletonList("*"));
         configuration.setAllowCredentials(true);
         configuration.addAllowedHeader("*");
-        configuration.setMaxAge(MAX_AGE);
+        configuration.setMaxAge(CrossOriginConst.MAX_AGE);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
