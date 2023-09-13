@@ -47,12 +47,9 @@ class OrderMapperTest {
         BigDecimal total = BigDecimal.valueOf(199L);
         long userId = 12L;
         UserEntity user = new UserEntity(
-                userId,
                 "Username",
                 "Password",
                 UserRole.USER,
-                false,
-                true,
                 "First Name",
                 "Last Name",
                 new AddressEntity(
@@ -61,17 +58,16 @@ class OrderMapperTest {
                         "City",
                         "Country"
                 ),
-                8423942354254L,
-                new ArrayList<>()
+                8423942354254L
         );
+        user.setId(userId);
         OrderEntity entity = new OrderEntity(
-                orderId,
                 new ArrayList<>(),
-                status,
-                createdAt,
-                total,
                 user
         );
+        entity.setCreatedAt(createdAt);
+        entity.setId(orderId);
+        entity.setTotal(total);
         // when
         OrderDto dto = underTest.toDto(entity);
         // then

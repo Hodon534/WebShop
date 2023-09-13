@@ -3,7 +3,6 @@ package com.webshop.model.entity;
 import com.webshop.model.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
-import org.apache.catalina.User;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -13,7 +12,8 @@ import java.util.List;
 /**
  * Entity class representing an order.
  */
-@AllArgsConstructor
+@Setter
+@Getter
 @NoArgsConstructor
 @EqualsAndHashCode
 @ToString
@@ -45,38 +45,6 @@ public class OrderEntity implements Serializable {
         status = Status.CREATED.name();
         createdAt = LocalDateTime.now();
         countTotal();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public List<OrderItemEntity> getOrderItems() {
-        return orderItems;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public BigDecimal getTotal() {
-        return total;
-    }
-
-    public UserEntity getUser() {
-        return user;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public void setOrderItems(List<OrderItemEntity> orderItems) {
-        this.orderItems = orderItems;
     }
 
     /**

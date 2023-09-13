@@ -10,9 +10,10 @@ import java.time.LocalDateTime;
 /**
  * Entity class representing an item within an order.
  */
+@Getter
+@Setter
 @EqualsAndHashCode
 @NoArgsConstructor
-@AllArgsConstructor
 @ToString
 @Table(name = "order_items")
 @Entity
@@ -42,26 +43,6 @@ public class OrderItemEntity implements Serializable {
         this.price = price;
         this.quantity = quantity;
         createdAt = LocalDateTime.now();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public ProductEntity getProduct() {
-        return product;
-    }
-
-    public BigDecimal getPrice() {
-        return price;
-    }
-
-    public Long getQuantity() {
-        return quantity;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
     }
 
 }

@@ -22,23 +22,23 @@ class AddressMapperTest {
     @Test
     void entityToDto() {
         // given
-        long id = 12L;
+        long addressId = 12L;
         String street = "17 Avenue";
         String zipCode = "41550";
         String city = "New York";
         String country = "USA";
         AddressEntity entity = new AddressEntity(
-                id,
                 street,
                 zipCode,
                 city,
                 country
         );
+        entity.setId(addressId);
         // when
         AddressDto dto = underTest.entityToDto(entity);
         // then
         assertAll(
-                () -> assertEquals(id, dto.getId()),
+                () -> assertEquals(addressId, dto.getId()),
                 () -> assertEquals(street, dto.getStreet()),
                 () -> assertEquals(zipCode, dto.getZipCode()),
                 () -> assertEquals(city, dto.getCity()),
@@ -49,13 +49,13 @@ class AddressMapperTest {
     @Test
     void dtoToEntity() {
         // given
-        long id = 12L;
+        long addressId = 12L;
         String street = "17 Avenue";
         String zipCode = "41550";
         String city = "New York";
         String country = "USA";
         AddressDto dto = new AddressDto(
-                id,
+                addressId,
                 street,
                 zipCode,
                 city,

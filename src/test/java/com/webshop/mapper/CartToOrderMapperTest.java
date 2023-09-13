@@ -36,27 +36,24 @@ class CartToOrderMapperTest {
 
     @BeforeEach
     void setUp() {
+        ProductInventoryEntity productInventory = new ProductInventoryEntity(
+                BigDecimal.valueOf(299L),
+                200L
+        );
+        productInventory.setId(2L);
         ProductEntity product = new ProductEntity(
-                productId,
                 "Products Name",
                 "Products Description",
                 new ManufacturerEntity(),
                 "Products Category",
-                new ProductInventoryEntity(
-                        2L,
-                        BigDecimal.valueOf(299L),
-                        200L
-                ),
-                "Products Image",
-                LocalDateTime.now()
+                productInventory,
+                "Products Image"
         );
+        product.setId(productId);
         UserEntity user = new UserEntity(
-                userId,
                 "Username",
                 "Password",
                 UserRole.USER,
-                false,
-                true,
                 "First Name",
                 "Last Name",
                 new AddressEntity(
@@ -65,9 +62,9 @@ class CartToOrderMapperTest {
                         "City",
                         "Country"
                 ),
-                8423942354254L,
-                new ArrayList<>()
+                8423942354254L
         );
+        user.setId(userId);
         userService = mock(UserService.class);
         when(userService.find(userId)).thenReturn(user);
         productService = mock(ProductService.class);

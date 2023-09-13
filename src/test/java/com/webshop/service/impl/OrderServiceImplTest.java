@@ -43,12 +43,9 @@ class OrderServiceImplTest {
 
         long userId = 12L;
         UserEntity user = new UserEntity(
-                userId,
                 "Username",
                 "Password",
                 UserRole.USER,
-                false,
-                true,
                 "First Name",
                 "Last Name",
                 new AddressEntity(
@@ -57,18 +54,16 @@ class OrderServiceImplTest {
                         "City",
                         "Country"
                 ),
-                8423942354254L,
-                new ArrayList<>()
+                8423942354254L
         );
+        user.setId(userId);
         OrderEntity orderEntity = new OrderEntity(
-                orderId,
                 new ArrayList<>(),
-                status,
-                createdAt,
-                total,
                 user
         );
-
+        orderEntity.setId(orderId);
+        orderEntity.setTotal(total);
+        orderEntity.setCreatedAt(createdAt);
         when(orderRepository.findById(orderId)).thenReturn(Optional.of(orderEntity));
 
         // when

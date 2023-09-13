@@ -1,21 +1,17 @@
 package com.webshop.model.entity;
 
-import com.webshop.model.enums.Categories;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
-
-//todo Serializable review
 
 /**
  * Entity class representing items sold on the website.
  */
 @Setter
+@Getter
 @EqualsAndHashCode
-@AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Table(name = "products")
@@ -64,59 +60,4 @@ public class ProductEntity implements Serializable {
         createdAt = LocalDateTime.now();
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public ManufacturerEntity getManufacturer() {
-        return manufacturer;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public ProductInventoryEntity getInventory() {
-        return inventory;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setManufacturer(ManufacturerEntity manufacturer) {
-        this.manufacturer = manufacturer;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public void setInventory(ProductInventoryEntity inventory) {
-        this.inventory = inventory;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
 }

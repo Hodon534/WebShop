@@ -39,18 +39,20 @@ class ManufacturerMapperTest {
     @Test
     void entityToDto() {
     // given
-    long id = 1L;
-    String name = "ManufacturerName";
+    long manufacturerId = 1L;
+    String manufacturerName = "ManufacturerName";
     String taxCode = "TaxCode";
     AddressEntity addressEntity = new AddressEntity("Street", "ZipCode", "City", "Country");
-    ManufacturerEntity manufacturerEntity = new ManufacturerEntity(id, name, addressEntity, taxCode);
+    ManufacturerEntity manufacturerEntity = new ManufacturerEntity(
+            manufacturerName, addressEntity, taxCode);
+    manufacturerEntity.setId(manufacturerId);
 
     // when
     ManufacturerDto dto = underTest.entityToDto(manufacturerEntity);
     // then
     assertAll(
-            () -> assertEquals(id, dto.getId()),
-            () -> assertEquals(name, dto.getName()),
+            () -> assertEquals(manufacturerId, dto.getId()),
+            () -> assertEquals(manufacturerName, dto.getName()),
             () -> assertEquals(taxCode, dto.getTaxCode())
             );
     }
@@ -58,18 +60,18 @@ class ManufacturerMapperTest {
     @Test
     void dtoToEntity() {
         // given
-        long id = 1L;
-        String name = "ManufacturerName";
+        long manufacturerId = 1L;
+        String manufacturerName = "ManufacturerName";
         String taxCode = "TaxCode";
         AddressDto addressDto = new AddressDto(1L, "Street", "ZipCode", "City", "Country");
-        ManufacturerDto manufacturerDto = new ManufacturerDto(id, name, addressDto, taxCode);
+        ManufacturerDto manufacturerDto = new ManufacturerDto(manufacturerId, manufacturerName, addressDto, taxCode);
 
         // when
         ManufacturerEntity entity = underTest.dtoToEntity(manufacturerDto);
 
         // then
         assertAll(
-                () -> assertEquals(name, entity.getName()),
+                () -> assertEquals(manufacturerName, entity.getName()),
                 () -> assertEquals(taxCode, entity.getTaxCode())
         );
     }

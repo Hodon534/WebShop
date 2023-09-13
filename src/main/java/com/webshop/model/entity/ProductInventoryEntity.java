@@ -9,8 +9,9 @@ import java.math.BigDecimal;
 /**
  * Entity class representing current stock information for products.
  */
+@Setter
+@Getter
 @EqualsAndHashCode
-@AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Table(name = "product_inventory")
@@ -32,26 +33,6 @@ public class ProductInventoryEntity implements Serializable {
      */
     public ProductInventoryEntity(BigDecimal currentPrice, long inStock) {
         this.currentPrice = currentPrice;
-        this.inStock = inStock;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public BigDecimal getCurrentPrice() {
-        return currentPrice;
-    }
-
-    public long getInStock() {
-        return inStock;
-    }
-
-    public void setCurrentPrice(BigDecimal currentPrice) {
-        this.currentPrice = currentPrice;
-    }
-
-    public void setInStock(long inStock) {
         this.inStock = inStock;
     }
 }

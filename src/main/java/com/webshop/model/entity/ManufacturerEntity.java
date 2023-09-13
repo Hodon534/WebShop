@@ -9,7 +9,6 @@ import java.io.Serializable;
  * Entity class representing a manufacturer.
  */
 @EqualsAndHashCode
-@AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Setter

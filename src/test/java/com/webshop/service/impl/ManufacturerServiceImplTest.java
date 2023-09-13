@@ -40,10 +40,10 @@ class ManufacturerServiceImplTest {
                 "City",
                 "Country");
         ManufacturerEntity manufacturerEntity = new ManufacturerEntity(
-                manufacturerId,
                 name,
                 addressEntity,
                 taxCode);
+        manufacturerEntity.setId(manufacturerId);
         when(manufacturerRepository.findById(manufacturerId)).thenReturn(Optional.of(manufacturerEntity));
         // when
         ManufacturerEntity manufacturerFound = underTest.find(manufacturerId);
@@ -86,18 +86,18 @@ class ManufacturerServiceImplTest {
                 "City",
                 "Country");
         ManufacturerEntity firstManufacturerEntity = new ManufacturerEntity(
-                firstManufacturerId,
                 firstName,
                 addressEntity,
                 firstTaxCode);
+        firstManufacturerEntity.setId(firstManufacturerId);
         long secondManufacturerId = 14L;
         String secondName = "FirstManufacturerName";
         String secondTaxCode = "FirstTaxCode";
         ManufacturerEntity secondManufacturerEntity = new ManufacturerEntity(
-                secondManufacturerId,
                 secondName,
                 addressEntity,
                 secondTaxCode);
+        secondManufacturerEntity.setId(secondManufacturerId);
         List<ManufacturerEntity> expectedManufacturers = List.of(firstManufacturerEntity, secondManufacturerEntity);
         when(manufacturerRepository.findAll()).thenReturn(expectedManufacturers);
         // when
@@ -122,10 +122,10 @@ class ManufacturerServiceImplTest {
                 "City",
                 "Country");
         ManufacturerEntity manufacturerEntity = new ManufacturerEntity(
-                manufacturerId,
                 name,
                 addressEntity,
                 taxCode);
+        manufacturerEntity.setId(manufacturerId);
         when(manufacturerRepository.save(manufacturerEntity)).thenReturn(manufacturerEntity);
 
         // when

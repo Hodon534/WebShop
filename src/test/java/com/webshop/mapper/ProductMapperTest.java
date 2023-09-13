@@ -30,7 +30,6 @@ class ProductMapperTest {
         String manufacturerName = "ManufacturerName";
 
         ManufacturerEntity manufacturer = new ManufacturerEntity(
-                manufacturerId,
                 manufacturerName,
                 new AddressEntity(
                         "street",
@@ -40,6 +39,7 @@ class ProductMapperTest {
                 ),
                 "taxCode"
         );
+        manufacturer.setId(manufacturerId);
 
         manufacturerService = mock(ManufacturerService.class);
         when(manufacturerService.find(manufacturerId)).thenReturn(manufacturer);
@@ -49,13 +49,12 @@ class ProductMapperTest {
     @Test
     void entityToDto() {
         // given
-        long id = 1L;
+        long productId = 1L;
         String name = "productsName";
         String description = "productsDescription";
         String manufacturerName = "ManufacturerName";
         long manufacturerId = 15L;
         ManufacturerEntity manufacturer = new ManufacturerEntity(
-                manufacturerId,
                 manufacturerName,
                 new AddressEntity(
                         "street",
@@ -65,31 +64,31 @@ class ProductMapperTest {
                 ),
                 "taxCode"
         );
+        manufacturer.setId(manufacturerId);
         String category = "consumer electronics";
         BigDecimal price = BigDecimal.valueOf(199L);
         long quantity = 100L;
         ProductInventoryEntity productInventory = new ProductInventoryEntity(
-                5L,
                 price,
                 quantity
         );
+        productInventory.setId(5L);
         String image = "imageUrl";
         LocalDateTime createdAt = LocalDateTime.now();
         ProductEntity entity = new ProductEntity(
-                id,
                 name,
                 description,
                 manufacturer,
                 category,
                 productInventory,
-                image,
-                createdAt
+                image
         );
+        entity.setId(productId);
         // when
         ProductCardDto dto = underTest.entityToDto(entity);
         //then
         assertAll(
-                () -> assertEquals(id, dto.getId()),
+                () -> assertEquals(productId, dto.getId()),
                 () -> assertEquals(name, dto.getName()),
                 () -> assertEquals(description, dto.getDescription()),
                 () -> assertEquals(manufacturerName, dto.getManufacturerName()),
@@ -104,7 +103,7 @@ class ProductMapperTest {
     @Test
     void dtoToNewEntity() {
         // given
-        long id = 1L;
+        long productId = 1L;
         String name = "productsName";
         String description = "productsDescription";
         String manufacturerName = "ManufacturerName";
@@ -114,7 +113,7 @@ class ProductMapperTest {
         long quantity = 100L;
         String image = "imageUrl";
         ProductCardDto dto = new ProductCardDto(
-                id,
+                productId,
                 name,
                 description,
                 manufacturerName,

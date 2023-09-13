@@ -9,7 +9,6 @@ import java.io.Serializable;
  * Entity class representing an address.
  */
 @EqualsAndHashCode
-@AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @Setter

@@ -31,20 +31,20 @@ class OrderItemMapperTest {
 
     @BeforeEach
     void setUp() {
+        ProductInventoryEntity productInventory = new ProductInventoryEntity(
+                BigDecimal.valueOf(299L),
+                200L
+        );
+        productInventory.setId(2L);
         ProductEntity product = new ProductEntity(
-                productId,
                 productName,
                 "Products Description",
                 new ManufacturerEntity(),
                 "Products Category",
-                new ProductInventoryEntity(
-                        2L,
-                        BigDecimal.valueOf(299L),
-                        200L
-                ),
-                productImage,
-                LocalDateTime.now()
+                productInventory,
+                productImage
         );
+        product.setId(productId);
         productService = mock(ProductService.class);
         when(productService.find(productId)).thenReturn(product);
         underTest = new OrderItemMapper(productService);
@@ -85,26 +85,26 @@ class OrderItemMapperTest {
         BigDecimal productPrice = BigDecimal.valueOf(499L);
         long productQuantity = 12L;
         LocalDateTime createdAt = LocalDateTime.now();
-        OrderItemEntity entity = new OrderItemEntity(
-                itemId,
-                new ProductEntity(
-                        productId,
-                        productName,
-                        "Products Description",
-                        new ManufacturerEntity(),
-                        "Products Category",
-                        new ProductInventoryEntity(
-                                2L,
-                                BigDecimal.valueOf(299L),
-                                200L
-                        ),
-                        productImage,
-                        LocalDateTime.now()
-                ),
-                productPrice,
-                productQuantity,
-                createdAt
+        ProductInventoryEntity productInventory = new ProductInventoryEntity(
+                BigDecimal.valueOf(299L),
+                200L
         );
+        productInventory.setId(2L);
+        ProductEntity productEntity = new ProductEntity(
+                productName,
+                "Products Description",
+                new ManufacturerEntity(),
+                "Products Category",
+                productInventory,
+                productImage
+        );
+        productEntity.setId(productId);
+        OrderItemEntity entity = new OrderItemEntity(
+                productEntity,
+                productPrice,
+                productQuantity
+        );
+        entity.setId(itemId);
 
         // when
         OrderItemDto dto = underTest.toDto(entity);
