@@ -28,7 +28,6 @@ class UserRepositoryTest {
         underTest.deleteAll();
     }
 
-    @Disabled
     @Test
     void itShouldCheckIfEmailExist() {
         // given
