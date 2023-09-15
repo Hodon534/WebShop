@@ -1,6 +1,6 @@
 package com.webshop.config;
 
-import com.webshop.model.constants.CrossOriginConst;
+import com.webshop.model.constants.ApiConst;
 import com.webshop.model.enums.UserRole;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -27,6 +27,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
+
     /**
      * Configures a bean of type BCryptPasswordEncoder, commonly used for password encoding and decoding in Spring Security.
      *
@@ -63,13 +64,13 @@ public class WebSecurityConfig {
                 .formLogin(
                         form ->
                                 form
-                                        .loginPage("/login")
-                                        .loginProcessingUrl("/login")
-                                        .defaultSuccessUrl("/")
+                                        .loginPage(ApiConst.SLASH_TEXT + ApiConst.LOGIN_PAGE_TEXT)
+                                        .loginProcessingUrl(ApiConst.SLASH_TEXT + ApiConst.LOGIN_PAGE_TEXT)
+                                        .defaultSuccessUrl(ApiConst.SLASH_TEXT)
                                         .permitAll())
                 .httpBasic(withDefaults())
                 .logout(logout -> logout
-                        .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                        .logoutRequestMatcher(new AntPathRequestMatcher(ApiConst.SLASH_TEXT + ApiConst.LOGOUT_PAGE_TEXT))
                 )
                 .cors(withDefaults())
                 .headers(header -> header
@@ -86,11 +87,11 @@ public class WebSecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Collections.singletonList(CrossOriginConst.BASE_LINK));
+        configuration.setAllowedOrigins(Collections.singletonList(ApiConst.CORS_BASE_LINK));
         configuration.setAllowedMethods(Collections.singletonList("*"));
         configuration.setAllowCredentials(true);
         configuration.addAllowedHeader("*");
-        configuration.setMaxAge(CrossOriginConst.MAX_AGE);
+        configuration.setMaxAge(ApiConst.CORS_MAX_AGE);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);

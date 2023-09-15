@@ -1,11 +1,10 @@
 package com.webshop.controller.rest;
 
 import com.webshop.mapper.CartToOrderMapper;
-import com.webshop.model.constants.CrossOriginConst;
+import com.webshop.model.constants.ApiConst;
 import com.webshop.model.constants.LogConst;
 import com.webshop.model.dto.CartDto;
 import com.webshop.service.OrderService;
-import com.webshop.service.impl.OrderServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/v1/cart")
-@CrossOrigin(origins = CrossOriginConst.BASE_LINK)
+@CrossOrigin(origins = ApiConst.CORS_BASE_LINK)
 public class CartController {
 
     private OrderService orderService;
