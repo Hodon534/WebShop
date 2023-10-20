@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/login")
+//@RequestMapping("/login")
 @CrossOrigin(origins = ApiConst.CORS_BASE_LINK)
 public class LoginController {
 }

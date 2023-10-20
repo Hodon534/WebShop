@@ -4,6 +4,8 @@ import com.webshop.model.constants.ApiConst;
 import com.webshop.model.enums.UserRole;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -15,7 +17,9 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import static org.springframework.security.config.Customizer.withDefaults;
 
@@ -24,6 +28,7 @@ import static org.springframework.security.config.Customizer.withDefaults;
  * This class defines security configurations, including authentication, authorization,
  * CORS (Cross-Origin Resource Sharing), and other security-related settings.
  */
+//@EnableWebMvc
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
@@ -87,14 +92,22 @@ public class WebSecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Collections.singletonList(ApiConst.CORS_BASE_LINK));
-        configuration.setAllowedMethods(Collections.singletonList("*"));
+        configuration.setAllowedOrigins(List.of(ApiConst.CORS_BASE_LINK));
         configuration.setAllowCredentials(true);
-        configuration.addAllowedHeader("*");
+        configuration.setAllowedMethods(Arrays.asList(
+                HttpMethod.GET.name(),
+                HttpMethod.POST.name(),
+                HttpMethod.PUT.name(),
+                HttpMethod.DELETE.name()
+                ));
+        configuration.setAllowedHeaders(Arrays.asList(
+                HttpHeaders.AUTHORIZATION,
+                HttpHeaders.CONTENT_TYPE,
+                HttpHeaders.ACCEPT
+        ));
         configuration.setMaxAge(ApiConst.CORS_MAX_AGE);
-
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
+        source.registerCorsConfiguration(ApiConst.SLASH_TEXT + ApiConst.DOUBLE_ASTERISK_TEXT, configuration);
         return source;
     }
 
