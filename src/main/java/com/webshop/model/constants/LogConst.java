@@ -45,4 +45,6 @@ public class LogConst {
      * Log message for registering a new user.
      */
     public static final String USER_NEW_REGISTERED_MESSAGE = "New User has been registered";
+
+    public static final String USER_LOGGED_IN = "User %s has just successfully logged in";
 }

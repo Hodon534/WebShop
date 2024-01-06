@@ -10,7 +10,7 @@ class AccessConst {
     private AccessConst(){}
 
     /**
-     * Public resources, available for all users
+     * Public resources, available for all
      */
     protected static final String[] RESOURCES_PUBLIC = {
             "/**",
